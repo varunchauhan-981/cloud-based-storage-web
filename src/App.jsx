@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import PublicShare from './pages/PublicShare';
 
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem('token');
@@ -16,6 +17,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         
+        {/* Public Share Route (Outsiders ke liye bina login ke accessible) */}
+        <Route path="/share/:token" element={<PublicShare />} />
+
         {/* Root Route to Dashboard */}
         <Route
           path="/"
